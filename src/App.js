@@ -10,8 +10,16 @@ import Login from './components/Login/Login';
 import Book from './components/Book/Book';
 import Header from './components/Header/Header';
 
+export const UserContext = createContext();
+
+
 function App() {
+const [loggedIn,setLoggedIn] = useState({});
+
   return (
+    <UserContext.Provider value={[loggedIn,setLoggedIn]}>
+<p>Name: {loggedIn.name} and Email : {loggedIn.email}</p>
+
       <Router>
           <Header/>
           <Switch>
@@ -29,6 +37,9 @@ function App() {
             </Route>
           </Switch>
       </Router>
+
+</UserContext.Provider>
+
   );
 }
 
